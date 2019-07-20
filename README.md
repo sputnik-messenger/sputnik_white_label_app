@@ -1,6 +1,6 @@
 # sputnik_white_label_app
 
-Sputnik Messenger White Lable - GPLv3 or later 
+Sputnik Messenger >white label< - GPLv3 or later 
 
 ## Disclaimer
 Sputnik Messenger and all related libraries are in a very early and highly unstable state. 
