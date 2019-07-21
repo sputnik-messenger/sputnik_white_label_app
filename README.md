@@ -1,4 +1,4 @@
-# sputnik_white_label_app
+# Sputnik - White Label
 
 Sputnik Messenger >white label< - GPLv3 or later 
 
