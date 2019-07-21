@@ -125,6 +125,7 @@ class SputnikWhiteLabelAppState extends State<SputnikWhiteLabelApp> with Widgets
                   matrixManager: matrixManager,
                   artwork: widget.whiteLabelConfig.loginScreenArtwork,
                   background: widget.whiteLabelConfig.loginScreenBackground,
+                  defaultDeviceName: widget.whiteLabelConfig.defaultDeviceName,
                 );
               }
             } else {
