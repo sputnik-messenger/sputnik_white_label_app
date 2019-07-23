@@ -35,4 +35,6 @@ abstract class WhiteLabelConfig {
   SputnikThemeData get sputnikThemeData;
 
   String get mediaFileDirectoryName;
+
+  WidgetBuilder get timelineBackground;
 }

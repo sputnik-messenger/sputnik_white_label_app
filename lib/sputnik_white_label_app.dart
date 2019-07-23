@@ -118,7 +118,7 @@ class SputnikWhiteLabelAppState extends State<SputnikWhiteLabelApp> with Widgets
                 final accountController = matrixManager.getAccountController(firstAccount.userId);
                 return StoreProvider<SputnikAppState>(
                   store: matrixManager.matrixStore,
-                  child: ConversationListRoute(accountController, fileSaver),
+                  child: ConversationListRoute(accountController, fileSaver, widget.whiteLabelConfig.timelineBackground),
                 );
               } else {
                 return LoginRoute(

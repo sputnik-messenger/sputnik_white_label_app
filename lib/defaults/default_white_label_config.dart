@@ -48,4 +48,7 @@ class DefaultWhiteLabelConfig implements WhiteLabelConfig {
 
   @override
   String get mediaFileDirectoryName => 'whitelabel_app';
+
+  @override
+  get timelineBackground => (BuildContext context) => Container();
 }
