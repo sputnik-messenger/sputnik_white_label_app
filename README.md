@@ -13,13 +13,13 @@ The code base is in active development and will change without warning.
 ```dart
 void main() {
   runApp(SputnikWhiteLabelApp(
-    whiteLabelConfig: MyAppConfig(),
+    globalConfigData: MyAppConfig(),
   ));
 }
 
-class MyAppConfig implements WhiteLabelConfig {
+class MyAppConfig implements GlobalConfigData {
   @override
-  SputnikThemeData get sputnikThemeData => MyAppThemeData();
+  SputnikThemeData get sputnikThemeData => DefaultWhiteLabelThemeData();
 
   @override
   WidgetBuilder get loginScreenBackground =>
@@ -43,6 +43,9 @@ class MyAppConfig implements WhiteLabelConfig {
 
   @override
   String get mediaFileDirectoryName => 'whitelabel_app';
+
+  @override
+  get timelineBackground => (BuildContext context) => Container();
 }
 
 class MyAppThemeData implements SputnikThemeData {

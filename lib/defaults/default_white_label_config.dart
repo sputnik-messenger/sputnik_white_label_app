@@ -18,11 +18,11 @@
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sputnik_ui/theme/sputnik_theme.dart';
-import 'package:sputnik_white_label_app/white_label_config.dart';
+import 'package:sputnik_ui/config/global_config_data.dart';
 
 import 'default_whitelabel_theme_data.dart';
 
-class DefaultWhiteLabelConfig implements WhiteLabelConfig {
+class DefaultConfig implements GlobalConfigData {
   @override
   SputnikThemeData get sputnikThemeData => DefaultWhiteLabelThemeData();
 

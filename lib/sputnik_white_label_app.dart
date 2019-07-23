@@ -21,27 +21,27 @@ import 'package:sputnik_app_state/sputnik_app_state.dart';
 import 'package:sputnik_matrix_sdk/matrix_manager/account_controller.dart';
 import 'package:sputnik_matrix_sdk/matrix_manager/matrix_manager.dart';
 import 'package:sputnik_matrix_sdk/matrix_manager/sync_handle.dart';
-import 'package:sputnik_ui/theme/sputnik_theme.dart';
+import 'package:sputnik_ui/config/global_config_data.dart';
+import 'package:sputnik_ui/config/global_config_widget.dart';
 import 'package:sputnik_ui/tool/file_saver.dart';
 import 'package:sputnik_ui/widget/route/conversations_list_route.dart';
 import 'package:sputnik_ui/widget/route/login_route.dart';
-import 'package:sputnik_white_label_app/white_label_config.dart';
 
 import 'defaults/default_white_label_config.dart';
 
 class SputnikWhiteLabelApp extends StatefulWidget {
-  final WhiteLabelConfig whiteLabelConfig;
+  final GlobalConfigData globalConfigData;
 
-  factory SputnikWhiteLabelApp({Key key, WhiteLabelConfig whiteLabelConfig}) {
+  factory SputnikWhiteLabelApp({Key key, GlobalConfigData globalConfig}) {
     return SputnikWhiteLabelApp._(
       key: key,
-      whiteLabelConfig: whiteLabelConfig ?? DefaultWhiteLabelConfig(),
+      globalConfigData: globalConfig ?? DefaultConfig(),
     );
   }
 
   SputnikWhiteLabelApp._({
     Key key,
-    this.whiteLabelConfig,
+    this.globalConfigData,
   }) : super(key: key);
 
   @override
@@ -57,7 +57,7 @@ class SputnikWhiteLabelAppState extends State<SputnikWhiteLabelApp> with Widgets
 
   Future<MatrixManager> _initMatrixManager() async {
     final sw = Stopwatch()..start();
-    final matrixManager = await MatrixManager.create(widget.whiteLabelConfig.userAgent);
+    final matrixManager = await MatrixManager.create(widget.globalConfigData.userAgent);
     if (matrixManager.matrixStore.state.accountSummaries.length > 0) {
       final firstAccount = matrixManager.matrixStore.state.accountSummaries.values.first;
       await matrixManager.loadAccountState(firstAccount.userId);
@@ -101,13 +101,12 @@ class SputnikWhiteLabelAppState extends State<SputnikWhiteLabelApp> with Widgets
 
   @override
   Widget build(BuildContext context) {
-    final fileSaver = FileSaver(widget.whiteLabelConfig.mediaFileDirectoryName);
 
-    return SputnikTheme(
-      themeData: widget.whiteLabelConfig.sputnikThemeData,
+    return GlobalConfig(
+      config: widget.globalConfigData,
       child: MaterialApp(
-        title: widget.whiteLabelConfig.title,
-        theme: widget.whiteLabelConfig.sputnikThemeData.materialThemeData,
+        title: widget.globalConfigData.title,
+        theme: widget.globalConfigData.sputnikThemeData.materialThemeData,
         home: FutureBuilder<MatrixManager>(
           future: initFuture,
           builder: (context, snapshot) {
@@ -118,14 +117,14 @@ class SputnikWhiteLabelAppState extends State<SputnikWhiteLabelApp> with Widgets
                 final accountController = matrixManager.getAccountController(firstAccount.userId);
                 return StoreProvider<SputnikAppState>(
                   store: matrixManager.matrixStore,
-                  child: ConversationListRoute(accountController, fileSaver, widget.whiteLabelConfig.timelineBackground),
+                  child: ConversationListRoute(accountController),
                 );
               } else {
                 return LoginRoute(
                   matrixManager: matrixManager,
-                  artwork: widget.whiteLabelConfig.loginScreenArtwork,
-                  background: widget.whiteLabelConfig.loginScreenBackground,
-                  defaultDeviceName: widget.whiteLabelConfig.defaultDeviceName,
+                  artwork: widget.globalConfigData.loginScreenArtwork,
+                  background: widget.globalConfigData.loginScreenBackground,
+                  defaultDeviceName: widget.globalConfigData.defaultDeviceName,
                 );
               }
             } else {
