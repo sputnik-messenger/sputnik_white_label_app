@@ -49,6 +49,9 @@ class MyAppConfig implements GlobalConfigData {
   
   @override
   WidgetBuilder getLoadingImageIndicator({String path}) => (_) => CircularProgressIndicator();
+  
+  @override
+  List<StickerPack> get stickerPacks => [];
 
 }
 

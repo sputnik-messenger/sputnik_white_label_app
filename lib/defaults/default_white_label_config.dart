@@ -18,6 +18,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
+import 'package:sputnik_ui/sticker/sticker_pack.dart';
 import 'package:sputnik_ui/theme/sputnik_theme.dart';
 import 'package:sputnik_ui/config/global_config_data.dart';
 
@@ -53,4 +54,7 @@ class DefaultConfig implements GlobalConfigData {
 
   @override
   WidgetBuilder getLoadingImageIndicator({String path}) => (_) => CircularProgressIndicator();
+
+  @override
+  List<StickerPack> get stickerPacks => [];
 }
