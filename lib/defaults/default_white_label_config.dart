@@ -15,6 +15,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sputnik_ui/theme/sputnik_theme.dart';
@@ -27,8 +28,7 @@ class DefaultConfig implements GlobalConfigData {
   SputnikThemeData get sputnikThemeData => DefaultWhiteLabelThemeData();
 
   @override
-  WidgetBuilder get loginScreenBackground =>
-      (BuildContext context) => Container();
+  WidgetBuilder get loginScreenBackground => (BuildContext context) => Container();
 
   @override
   String get title => 'WhitelabelSputnikMessenger';
@@ -37,8 +37,7 @@ class DefaultConfig implements GlobalConfigData {
   String get userAgent => 'WhitelabelSputnikMessenger/dev';
 
   @override
-  WidgetBuilder get loginScreenArtwork => (BuildContext context) =>
-      AspectRatio(aspectRatio: 1, child: Placeholder());
+  WidgetBuilder get loginScreenArtwork => (BuildContext context) => AspectRatio(aspectRatio: 1, child: Placeholder());
 
   @override
   String get defaultDeviceName => 'Phone #1';
@@ -51,4 +50,7 @@ class DefaultConfig implements GlobalConfigData {
 
   @override
   get timelineBackground => (BuildContext context) => Container();
+
+  @override
+  WidgetBuilder getLoadingImageIndicator({String path}) => (_) => CircularProgressIndicator();
 }

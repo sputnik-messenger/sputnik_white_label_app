@@ -46,6 +46,10 @@ class MyAppConfig implements GlobalConfigData {
 
   @override
   get timelineBackground => (BuildContext context) => Container();
+  
+  @override
+  WidgetBuilder getLoadingImageIndicator({String path}) => (_) => CircularProgressIndicator();
+
 }
 
 class MyAppThemeData implements SputnikThemeData {
