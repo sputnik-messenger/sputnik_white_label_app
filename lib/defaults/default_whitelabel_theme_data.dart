@@ -24,6 +24,8 @@ class DefaultWhiteLabelThemeData implements SputnikThemeData {
   final Color successColor;
   final Color warnColor;
   final Color errorColor;
+  final MaterialAccentColor accentPalette;
+  final MaterialColor primaryPalette;
 
   DefaultWhiteLabelThemeData._({
     this.myMessageBubbleColor,
@@ -31,6 +33,8 @@ class DefaultWhiteLabelThemeData implements SputnikThemeData {
     this.successColor,
     this.warnColor,
     this.errorColor,
+    this.accentPalette,
+    this.primaryPalette,
   });
 
   factory DefaultWhiteLabelThemeData() {
@@ -46,4 +50,5 @@ class DefaultWhiteLabelThemeData implements SputnikThemeData {
       errorColor: Colors.red,
     );
   }
+
 }
